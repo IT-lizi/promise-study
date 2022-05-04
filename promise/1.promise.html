@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Promise 初体验</h1>
+    <button>点击抽奖</button>
+</body>
+<script>
+    const btn = document.querySelector('button');
+    //生成一个m到n的随机整数
+    function rand(m, n) {
+        return Math.ceil(Math.random() * (n - m + 1)) + m - 1;
+    }
+    btn.onclick = function() {
+        // setTimeout(() => {
+        //     let n = rand(1, 100);
+        //     if (n > 30) {
+        //         alert('恭喜你中奖了');
+        //     } else {
+        //         alert('再接再厉')
+        //     }
+        // }, 1000)
+
+        //promise方法实现
+        // resolve和reject是函数类型数据
+        const p = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                let n = rand(1, 100);
+                if (n > 30) {
+                    //将promise对象的状态设置为失败      还可以获取失败的结果值
+                    reject(n);
+                } else {
+                    //将promise对象的状态设置为成功
+
+                    resolve(n);
+
+                }
+            }, 1000)
+        });
+        //then方法，指定promise成功或失败时回调的函数内容
+        p.then((value) => {
+            alert('恭喜你中奖了！ 你的中奖号码为' + value);
+        }, (reason) => {
+            alert('再接再厉 你的号码为' + reason);
+        })
+    }
+</script>
+
+</html>
