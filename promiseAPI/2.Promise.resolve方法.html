@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 跟其他的有所不同 这个方法属于Promise函数对象本身,不属于实例对象 -->
+    <script>
+        let p = Promise.resolve(521);
+        //如果参数为非promise类型的对象，则返回的结果就是成功promise对象
+        //如果参数为promise类型的对象，则返回的结果与参数的promise结果一致
+        // 如果只有参数内promise错误，则用catch在后面指定错误时的函数
+        let p2 = Promise.resolve(new Promise((resolve, reject) => {
+            reject('error');
+        }));
+        p2.catch(reason => {
+            console.log(reason);
+        })
+        console.log(p);
+    </script>
+</body>
+
+</html>

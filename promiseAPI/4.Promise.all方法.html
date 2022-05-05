@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Promise.all返回一个新的promise对象，只有所有的promise都成功时返回的才是成功 -->
+    <script>
+        let p1 = new Promise((resolve, reject) => {
+            resolve('ok');
+        });
+        let p2 = new Promise((resolve, reject) => {
+            resolve('okk');
+        });
+        let p3 = new Promise((resolve, reject) => {
+            resolve('okkk');
+        });
+        const result = Promise.all([p1, p2, p3]);
+        console.log(result);
+        //如果数组中有一个是失败的，那么返回的结果时失败的那个的结果
+        //有多个失败就选第一个
+        let p4 = new Promise((resolve, reject) => {
+            reject('nooo');
+        });
+        let p5 = new Promise((resolve, reject) => {
+            reject('n');
+        })
+        const result1 = Promise.all([p1, p2, p3, p4]);
+        console.log(result1);
+        const result2 = Promise.all([p1, p2, p3, p4, p5]);
+        console.log(result2);
+    </script>
+</body>
+
+</html>
