@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let p = new Promise((resolve, reject) => {
+            //1.用resolve函数  pending=>resolveed
+            resolve('ok');
+            //2.用reject函数   pending=》rejected
+            reject('no');
+            //3.抛出错误
+            throw 'warn';
+        })
+    </script>
+</body>
+
+</html>
