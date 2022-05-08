@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const p = new Promise((resolve, reject) => {
+            //此时执行器内为同步任务，先改变promise状态再指定回调函数
+            resolve('ok');
+
+        });
+        p.then(value => {
+            console.log(value);
+        });
+        const p2 = new Promise((resolve, reject) => {
+            //此时执行器内为异步任务，先指定回调后改变promise状态
+            setTimeout(() => {
+                reject('okk');
+            }, 1000)
+        });
+        //若想先改变pormise状态 ，可以给then部分加一个延迟更久的定时器
+        p.then(value => {
+            console.log(value);
+        })
+    </script>
+</body>
+
+</html>
