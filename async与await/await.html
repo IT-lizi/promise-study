@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        async function main() {
+            let p = new Promise((resolve, reject) => {
+                // resolve('ok');
+                reject('no');
+            });
+            // 1.await右侧为promise的情况  结果为promise成功时的结果值
+            // let res1 = await p;
+            // console.log(res1);
+            // 2.await右边为非promise数据时  结果为本身
+            // let res2 = await 11;
+            // console.log(res2);
+            // 3.如果promise是失败的一个状态  要求添加try catch方法 捕获异常状态
+            try {
+                let res3 = await p;
+            } catch (e) {
+                console.log(e);
+            }
+
+        };
+        main();
+    </script>
+</body>
+
+</html>
